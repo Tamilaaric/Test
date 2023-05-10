@@ -1,16 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>E-commerce Website</title>
-    <link rel="stylesheet" type="text/css" href="app.css">
+  <meta charset="utf-8">
+  <title>E-commerce Website</title>
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <style>
+    form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
 </head>
 <body>
-    <form action="/submit" method="POST">
-        <label for="Username">Username:</label>
-        <input type="text" id="username" name="username">
-        <label for="Password">Username:</label>
-        <input type="text" id="password" name="password">
-        <button type="submit">Submit</button>
-      </form>
+  <form action="/login" method="POST">
+    <div class="title">Login Form</div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <button type="submit" id="submitBtn">Submit</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+    const submitBtn = document.querySelector('#submitBtn');
+    const usernameInput = document.querySelector('#username');
+    const passwordInput = document.querySelector('#password');
+
+    // Add event listener to form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission behavior
+      const username = usernameInput.value;
+      const password = passwordInput.value;
+
+      // Validate username and password
+      if (username === '' || password === '') {
+        alert('Please enter a username and password');
+        return;
+      }
+
+      // Submit form
+      form.submit();
+    });
+
+    // Add event listener to submit button hover
+    submitBtn.addEventListener('mouseover', function() {
+      submitBtn.style.backgroundColor = '#555';
+    });
+
+    // Add event listener to submit button mouseout
+    submitBtn.addEventListener('mouseout', function() {
+      submitBtn.style.backgroundColor = '#333';
+    });
+  </script>
 </body>
 </html>
